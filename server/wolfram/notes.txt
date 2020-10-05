@@ -1,0 +1,7 @@
+brown = RemoveBackground[i]
+corners = ImageCorners[i, 150];
+HighlightImage[i, corners]
+
+x = RemoveBackground[i, {White, 0.5}]
+RemoveBackground[x, {Black, .2}]x = RemoveBackground[i, {White, 0.5}]
+RemoveBackground[x, {Black, .2}]
