@@ -11,3 +11,5 @@ On your server
 2. in the ./server folder create an images folder `mkdir images` this is where images from the pi will be stored and where the wolfram script will look for images
 3. in the ./server/wolfram folder create an images folder `mkdir images` this is where the wolfram scripts will create modified images
 3. run `npm start`
+4. install the google cloud SDK
+5. Make sure you have your google account setup to properly use your google api authenitcation

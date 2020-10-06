@@ -1,2 +1,6 @@
 server/node_modules
 server/images/*
+server/backups/*
+server/google-api/Kami no tou-1f6617eef03d.json
+server/wolfram/croppedImages/*
+server/wolfram/images/*

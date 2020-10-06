@@ -2,16 +2,16 @@
 imageName = $ScriptCommandLine[[2]]
 Print["Starting Image Conversion"]
 SetDirectory[Directory[]];
-file = FileNameJoin[{"..","images", imageName}];
+file = FileNameJoin[{"images", imageName}];
 
 originalImage = Import[file]
-resizedImage = ImageResize[originalImage, 500]
-modifiedImage = RemoveBackground[resizedImage]
+noBackgroundImage = RemoveBackground[originalImage]
+sharpenedImage = Sharpen[noBackgroundImage, 20]
 
-outputDir = FileNameJoin[{".", "images"}]
+outputDir = FileNameJoin[{".", "wolfram", "images"}]
 fileLength = FileNames[All, outputDir] // Length
-filename = FileNameJoin[{outputDir, StringJoin[ToString[fileLength + 1], ".jpg"]}]
+filename = FileNameJoin[{outputDir, StringJoin[ToString[fileLength], ".jpg"]}]
 
-Export[filename, modifiedImage, "JPEG"]
+Export[filename, sharpenedImage, "JPEG"]
 
 Print["Image Created"]
