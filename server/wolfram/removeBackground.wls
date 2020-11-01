@@ -1,6 +1,7 @@
 #!/usr/bin/env wolframscript
 imageName = $ScriptCommandLine[[2]]
 Print["Starting Image Conversion"]
+
 SetDirectory[Directory[]];
 file = FileNameJoin[{"images", imageName}];
 
