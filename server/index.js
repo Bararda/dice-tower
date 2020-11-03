@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 const result = dotenv.config();
 const client = new vision.ImageAnnotatorClient({keyFilename: process.env.keyFilename});
 
-const { WolframUtils, ImageUtils } = require('./utils');
+const { WolframUtils, ImageUtils, CloudVisionUtils } = require('./utils');
 
 if (result.error) {
 	throw result.error;
@@ -35,7 +35,13 @@ app.post('/images', async (req, res, next) => {
 	const wolframUtils = new WolframUtils(wolframScriptPath);
 	await wolframUtils.removeBackground(filename);
 	const [result] = await client.objectLocalization(`./wolfram/images/${filename}`);
-	wolframUtils.cropLocalizedObjects(filename, result);
+	const croppedImages = await wolframUtils.cropLocalizedObjects(filename, result);
+	console.log(croppedImages);
+	const cloudVisionUtils = new CloudVisionUtils(client);
+	const detections = await cloudVisionUtils.textDetection(croppedImages);
+
+	detections.forEach(file => file.forEach((text) => console.log(text)));;
+
 	fileCount++;
 });
 

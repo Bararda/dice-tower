@@ -19,7 +19,7 @@ class WolframUtils {
 					if (error) console.log(error);
 					if (stderr) console.log(stderr);
 					console.log(stdout);
-					res();
+					res(stdout);
 				});
 			} catch (e) {
 				console.log(e);
@@ -33,7 +33,7 @@ class WolframUtils {
 	 * @param {String} filename filename to crop
 	 * @param {*} result results from google cloud vision api for the image
 	 */
-	cropLocalizedObjects(filename, result) {
+	async cropLocalizedObjects(filename, result) {
 		const cropScript = 'cropVertices';
 		const objects = result.localizedObjectAnnotations;
 		const objectsCropped = objects.map(objects => {
@@ -42,7 +42,10 @@ class WolframUtils {
 			const bottomRight = boundingPoly.normalizedVertices[2];
 			return this.sendCommand(cropScript, filename, topLeft.x, topLeft.y, bottomRight.x, bottomRight.y);
 		});
-		return Promise.all(objectsCropped);
+		const filenames = await Promise.all(objectsCropped);
+		return filenames.map((file) => {
+			return file.substring(0, file.length - 1); // remove the \n from the filename
+		});
 	}
 
 	/**
