@@ -5,3 +5,4 @@ server/google-api/Kami no tou-1f6617eef03d.json
 server/wolfram/croppedImages/*
 server/wolfram/images/*
 server/google-api/Kami_no_tou-1f6617eef03d.json
+*.pyc

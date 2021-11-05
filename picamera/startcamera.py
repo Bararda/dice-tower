@@ -5,13 +5,13 @@ from gpiozero import Button
 
 button = Button(2)
 
-while True
+while True:
     button.wait_for_press()
-    try: 
+    try:
         camera = PiCamera()
         # Maybe TO-DO specify more camera options (like brightness)
         camera.start_preview()
-        sleep(2) #Camera Warm up
+        sleep(2)  # Camera Warm up
         camera.capture('image_test.jpg')
         PhotoManager.sendFile('image_test.jpg')
         pass
