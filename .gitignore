@@ -13,3 +13,4 @@ notes/images/lines-example.gif
 notes/images/matrix.svg
 notes/line-intersection.md
 notes/notes.md
+*.pyc
