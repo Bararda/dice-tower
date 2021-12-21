@@ -1,7 +1,15 @@
 server/node_modules
 server/images/*
+server/image-archive/*
 server/backups/*
 server/google-api/Kami no tou-1f6617eef03d.json
 server/wolfram/croppedImages/*
 server/wolfram/images/*
 server/google-api/Kami_no_tou-1f6617eef03d.json
+notes/images/determinate-eval.svg
+notes/images/line-intersection-determinate-x.gif
+notes/images/line-intersection-determinate-y.gif
+notes/images/lines-example.gif
+notes/images/matrix.svg
+notes/line-intersection.md
+notes/notes.md
